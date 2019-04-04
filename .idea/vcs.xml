@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Yandex-Practicum" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fallout-pipboy-alpha" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/news-site" vcs="Git" />
   </component>
 </project>
