@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,500');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300 !important;
+    margin: 0px;
+
+}
+
+
+body h1 {
+    font-weight: 300;
+    margin: 20px 30px;
+    display: inline-block;
+}
+
+#main-header {
+    border-bottom: 2px solid #000;
+}
+
+#top-stories {
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+article {
+    width: 301px;
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 0px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.3);
+    transition: box-shadow 500ms, background 3s;
+}
+
+#site-title {
+    display: inline-block;
+}
+
+.profile-menu {
+    list-style: none;
+    float: right;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+[data-trigger="dropdown"] {
+    padding-bottom: 35px;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0px;
+    border: 1px solid #aaa;
+    background: #fff;
+    margin-top: 30px;
+    box-shadow: 2px 2px 15px rgba(0,0,0,.3);
+    width: 300px;
+    position: absolute;
+    right: 10px;
+    display: none;
+}
+
+.submenu.active {
+    display: block;
+}
+
+.submenu a {
+    text-decoration: none;
+    padding: 10px 10px;
+    display: block;
+    color: #333;
+    text-shadow: none;
+    font-weight: 600;
+    letter-spacing: 0px;
+}
+
+.submenu a:hover {
+    background: #eee;
+}
+
+section {
+    max-width: 100%;
+    width:900px;
+    margin: auto;
+}
+
+#context {
+    display: inline-block;
+    position: absolute;
+    background: #fff;
+    box-shadow: 2px 2px 15px rgba(0,0,0,.5);
+    display: none;
+}
+
+.context-menu {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.context-menu a {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    text-shadow: none;
+    font-weight: 600;
+}
+
+.context-menu a:hover {
+    background: #eee;
+}
+
+.context-menu a.hidden {
+    display: none;
+}
+
+.context-menu a.hidden.shown {
+    display: block;
+}
+
+.status {
+   // display: none;
+}
