@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="/css/bootstrap.min.css">-->
+
+    <!--<script type="text/javascript" src="/js/bootstrap.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Diplom project</title>
+</head>
+<body>
+<div class="page">
+    <!--navmenu-->
+    <div class="container col-lg-12 bg-light header">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Calculate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about-us.html">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contacts</a>
+            </li>
+        </ul>
+    </div>
+    <!--navmenu-->
+
+    <!-- Page Content -->
+    <div class="container content">
+        <div class="row">
+            <div class="card col-lg-10">
+                <div class="card-header bg-white text-center">
+                    Caclulate
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <p>Ввод данных:</p>
+                    </div>
+                    <div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">m</span>
+                            </div>
+                            <input type="text" class="form-control" id="massa" placeholder="Масса объекта" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2">V</span>
+                            </div>
+                            <input type="text" class="form-control" id="velocity" placeholder="Скорость перемещения рабочих элементов" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">D0</span>
+                            </div>
+                            <input type="text" class="form-control" id="diameter" placeholder="Минимальный диаметр захватываемого объекта" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon4">h</span>
+                            </div>
+                            <input type="text" class="form-control" id="linearMotion" placeholder="Линейное перемещение рабочего элемента" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-light" id="calculate">
+                            Расчёт
+                        </button>
+                        <button class="ml-1 btn btn-light">
+                            Подробный расчёт
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="text-justify">
+                        <p>Требуемая мощность:<span class="ml-2" id="power"></span></p>
+                    </div>
+                    <div class="d-inline">
+                        <select class="custom-select col-md-5 d-inline">
+                            <option selected>Выберите двигатель</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <div class="col-md-5 text-justify d-inline">
+                            Результат расчётов:
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Content -->
+
+    <!--Footer -->
+    <div class="footer-copyright text-center bg-light">© 2019 Copyright:
+        <a href="https://mastekator.github.io/">Maxim Tretiak</a>
+    </div>
+    <!--Footer -->
+</div>
+</body>
+<script type="text/javascript" src="js/index.js"></script>
+</html>

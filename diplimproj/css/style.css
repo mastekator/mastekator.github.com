@@ -1,0 +1,63 @@
+
+html,
+body {
+    height: 100%;
+}
+
+.card {
+box-shadow: 0 0.35rem 1.5rem rgba(18,38,63,.13);
+    border: none !important;
+}
+
+.page {
+    min-height: 100%;
+    position: relative;
+}
+/* Правила для шапки */
+.nav-link {
+    color: black !important;
+}
+/* Правила для контента */
+.content {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+}
+.footer-copyright {
+    padding: 2%;
+    position: absolute;
+    bottom: 0 ;
+    width: 100% ;
+    height: auto !important;
+    height: 100px;
+}
+
+.card-contacts{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 2.15rem;
+    display: -webkit-box !important;
+}
+
+.h3-contacts{
+    color: #717981;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.8;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.icons{
+    font-size: 30px;
+}
+
+.custom{
+    color: grey;
+}
+
+.custom:hover{
+    color: cadetblue;
+}
+
