@@ -32,6 +32,15 @@ box-shadow: 0 0.35rem 1.5rem rgba(18,38,63,.13);
     height: 100px;
 }
 
+.copyright-link{
+    text-decoration: none;
+    color: black !important;
+}
+
+.copyright-link:hover{
+    color: cadetblue !important;
+}
+
 .card-contacts{
     margin-top: 2%;
     margin-bottom: 2%;
@@ -60,4 +69,3 @@ box-shadow: 0 0.35rem 1.5rem rgba(18,38,63,.13);
 .custom:hover{
     color: cadetblue;
 }
-
