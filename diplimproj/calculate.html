@@ -8,7 +8,7 @@
     <!--<link rel="stylesheet" href="/css/bootstrap.min.css">-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
     <!--<script type="text/javascript" src="/js/bootstrap.min.js"></script>-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <meta charset="utf-8">
@@ -52,25 +52,25 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">m</span>
                                 </div>
-                                <input type="number" class="form-control" id="massa" placeholder="Масса объекта" aria-describedby="basic-addon1">
+                                <input type="number" class="form-control" id="massa" placeholder="Масса объекта" aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon2">V</span>
                                 </div>
-                                <input type="number" class="form-control" id="velocity" placeholder="Скорость перемещения рабочих элементов" aria-describedby="basic-addon1">
+                                <input type="number" class="form-control" id="velocity" placeholder="Скорость перемещения рабочих элементов" aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon3">D0</span>
                                 </div>
-                                <input type="number" class="form-control" id="diameter" placeholder="Минимальный диаметр захватываемого объекта" aria-describedby="basic-addon1">
+                                <input type="number" class="form-control" id="diameter" placeholder="Минимальный диаметр захватываемого объекта" aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon4">h</span>
                                 </div>
-                                <input type="number" class="form-control" id="linearMotion" placeholder="Линейное перемещение рабочего элемента" aria-describedby="basic-addon1">
+                                <input type="number" class="form-control" id="linearMotion" placeholder="Линейное перемещение рабочего элемента" aria-describedby="basic-addon1" required>
                             </div>
                         </div>
                         <div class="btn-group">
@@ -82,53 +82,77 @@
                             </button>
                         </div>
                         <hr>
-                        <div class="text-justify">
-                            <p>Требуемая мощность:<span class="ml-2" id="power"></span></p>
-                        </div>
-                        <div>
-                            <select class="custom-select col-md-5 d-inline">
-                                <option selected>Выберите двигатель</option>
-                                <option value="1">Двигатель FL86BLS71 220 Вт</option>
-                                <option value="2">Двигатель 2</option>
-                                <option value="3">Двигатель 3</option>
-                            </select>
-                            <div class="col-lg-12">
-                                <table class="table">
-                                    <thead>
-                                        <label class="mt-2">Результат расчётов:</label>
+                        <div id="fadetoggler">
+                            <div class="text-justify">
+                                <p>Требуемая мощность:<span class="ml-2" id="power"></span></p>
+                            </div>
+                            <div>
+                                <select class="custom-select col-md-5 d-inline">
+                                    <option selected>Выберите двигатель</option>
+                                    <option value="1">Двигатель FL86BLS71 220 Вт</option>
+                                    <option value="2">Двигатель 2</option>
+                                    <option value="3">Двигатель 3</option>
+                                </select>
+                                <div class="col-lg-12">
+                                    <table class="table">
+                                        <thead>
+                                            <label class="mt-2">Результат расчётов:</label>
+                                            <tr>
+                                                <th scope="col">Название</th>
+                                                <th scope="col">Значение</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Делительный диаметр шестерни</td>
+                                                <td id="val1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Модуль зубьев</td>
+                                                <td id="val2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Угол поворота колеса</td>
+                                                <td id="val3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Минимальное число зубьев</td>
+                                                <td id="val4"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Перемещение рейки</td>
+                                                <td id="val5"></td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
                                         <tr>
-                                            <th scope="col">Название</th>
-                                            <th scope="col">Значение</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Делительный диаметр шестерни</td>
-                                            <td id="val1"></td>
+                                            <td>Угол поворота винта</td>
+                                            <td id="val6"></td>
                                         </tr>
                                         <tr>
-                                            <td>Модуль зубьев</td>
-                                            <td id="val2"></td>
+                                            <td>Угловая скорость винта</td>
+                                            <td id="val7"></td>
                                         </tr>
                                         <tr>
-                                            <td>Угол поворота колеса</td>
-                                            <td id="val3"></td>
+                                            <td>Осевая сила, действующая на гайку</td>
+                                            <td id="val8"></td>
                                         </tr>
                                         <tr>
-                                            <td>Минимальное число зубьев</td>
-                                            <td id="val4"></td>
+                                            <td>Cуммарная осевая сила</td>
+                                            <td id="val9"></td>
                                         </tr>
                                         <tr>
-                                            <td>Перемещение рейки</td>
-                                            <td id="val5"></td>
+                                            <td>Шаг резьбы</td>
+                                            <td id="val10"></td>
                                         </tr>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
 
 
+                                </div>
                             </div>
                         </div>
-                        <button class="btn btn-light mt-3 d-none" id="calculate">
+                        <button class="btn btn-light mt-3 mb-2 d-none" id="calculate">
                             Расчёт
                         </button>
                     </div>

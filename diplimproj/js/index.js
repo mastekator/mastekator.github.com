@@ -28,6 +28,13 @@ $(document).ready(function () {
     var F;
     var F_1;
 
+    //винтовая передача
+    const K = 1; //Число заходов резьбы
+    const K_p = 0.8; //коэффициент, зависящий от типа резьбы
+    const y = 2.4; // коэффициент высоты гайки
+    const q_vint = 5; //МПа допускаемое давление между рабочими поверхностями резьбы винта и гайки
+
+
 
     //Выбор электродвиигателя
     function elEngine() {
@@ -77,7 +84,7 @@ $(document).ready(function () {
         var d1_1 = 1.2 * k_d * Math.cbrt((T3 * Math.pow(10, 3) * E_pr * k_HB) / (psi_bd * Math.pow(Si_H, 2))); //делительный диаметр шестерни из условия контактной прочности зубьев
         var d1 = Math.ceil(Math.max(d1_1, d1_2)); //Делительный диаметр шестерни после сравнениея
 
-        var F2 = 2 * T3 / d1; //Осевая сила, действующая на рейку
+        var F2 = 2 * T3 * 10 * 10 * 10 / d1; //Осевая сила, действующая на рейку
         var Si_flimb = 1.8 * HB; //предел изгибной выносливости поверхностей зубьев
         var Si_F = Si_flimb / S_F * k_FL * k_FC;
         var m_modul = Math.ceil(k_m * F2 / psi_bd / d1 / Si_F); //Модуль зубьев
@@ -86,7 +93,7 @@ $(document).ready(function () {
         var d1_f = d1 - 2.5 * m_modul; //Диаметр окружности впадин зубьев
         var S1 = 0.5 * Math.PI * m_modul; //Толщина зуба по средней прямой и толщина зуба шестерни по делительной окружности
         var P1 = Math.PI * m_modul; //Нормальный шаг зубьев
-        var alpha = Math.asin(h / d / 1000); //Угол поворота колеса
+        var alpha = Math.asin(h / d / 1000).toFixed(4); //Угол поворота колеса
         var H1 = Math.round(d1 * alpha / 2); //перемещение рейки
         var W1 = v / d; //Угловая скорость шестерни
         var V1 = W1 * d1 / 2000; //скорость линейного перемещения рейки
@@ -95,6 +102,7 @@ $(document).ready(function () {
         var b1 = Math.ceil(psi_bd * d1); //Ширина зубчатого венца рейки
         var b2 = Math.ceil(b1 + 0.6 * Math.sqrt(b1)); //Ширина шестерни
 
+        //Добавление переменных в таблицу
         $("#val1").append(d1);
         $("#val2").append(m_modul);
         $("#val3").append(alpha);
@@ -102,15 +110,37 @@ $(document).ready(function () {
         $("#val5").append(H1);
 
         //Расчет винтовой передачи скольжения
+        var P = Math.round(2 * 10 * 10 * 10 * Math.PI / U2 / K); //Шаг резьбы
+        var fi = (2 * Math.PI * h / P / K).toFixed(2); //Угол поворота винта
+        var v_vinta = 0.002; //Линейная скорость гайки (рандомное взято)
+        var w = (2 * Math.PI * 10 * 10 * 10 * v_vinta / P / K).toFixed(2); //Угловая скорость винта
 
-        console.log(b2);
+        //Проектный расчет винта
+        var F_a = Math.round(2 * F2); //Осевая сила, действующая на гайку
+        var F_asum = Math.round(1.5 * F_a); // суммарная осевая сила
+        var d2 = K_p * Math.sqrt(F_asum / y / q_vint ); //Средний диаметр
+
+        $("#val6").append(fi);
+        $("#val7").append(w);
+        $("#val8").append(F_a);
+        $("#val9").append(F_asum);
+        $("#val10").append(P);
+
+        console.log(d2);
     }
 
     // Кнопка расчет мощности двигателя
     $("#calculateEng").on('click', function () {
-        elEngine();
-        $("#calculateEng").off('click');
-        $("#calculate").removeClass('d-none');
+        if ($("#massa").val() && $("#velocity").val() && $("#diameter").val() && $("#linearMotion").val()){
+            elEngine();
+            $("#fadetoggler").fadeIn();
+            $("#calculateEng").off('click');
+            $("#calculate").removeClass('d-none');
+            $(".form-control").removeClass('border-danger');
+        } else {
+            $(".form-control").addClass('border-danger');
+        }
+
     });
 
     // Кнопка расчет
