@@ -5,7 +5,7 @@ body {
 }
 
 .card {
-box-shadow: 0 0.35rem 1.5rem rgba(18,38,63,.13);
+    box-shadow: 0 0.35rem 1.5rem rgba(18, 38, 63, .13);
     border: none !important;
 }
 
@@ -13,42 +13,45 @@ box-shadow: 0 0.35rem 1.5rem rgba(18,38,63,.13);
     min-height: 100%;
     position: relative;
 }
+
 /* Правила для шапки */
 .nav-link {
     color: black !important;
 }
+
 /* Правила для контента */
 .content {
     padding-top: 5%;
     padding-bottom: 5%;
     width: 100%;
 }
+
 .footer-copyright {
     padding: 2%;
     position: absolute;
-    bottom: 0 ;
-    width: 100% ;
+    bottom: 0;
+    width: 100%;
     height: auto !important;
     height: 100px;
 }
 
-.copyright-link{
+.copyright-link {
     text-decoration: none;
     color: black !important;
 }
 
-.copyright-link:hover{
+.copyright-link:hover {
     color: cadetblue !important;
 }
 
-.card-contacts{
+.card-contacts {
     margin-top: 2%;
     margin-bottom: 2%;
     padding: 2.15rem;
     display: -webkit-box !important;
 }
 
-.h3-contacts{
+.h3-contacts {
     color: #717981;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
     font-weight: 600;
@@ -58,18 +61,38 @@ box-shadow: 0 0.35rem 1.5rem rgba(18,38,63,.13);
     font-size: 0.9rem;
 }
 
-.icons{
-    font-size: 30px;
-}
-
-#fadetoggler{
+.input-coefficients {
+    z-index: 2;
+    margin-top: 1%;
     display: none;
 }
 
-.custom{
+.icon-question {
+    font-size: 12px;
+    transition: 300ms;
+    margin-bottom: 9px;
+}
+
+.icon-question:hover {
+    color: #cd9008;
+}
+
+.icons {
+    font-size: 30px;
+}
+
+#fadetoggler {
+    display: none;
+}
+
+.custom {
     color: grey;
 }
 
-.custom:hover{
+.custom:hover {
     color: cadetblue;
+}
+
+.MJXc-display {
+    margin: 0 !important;
 }
