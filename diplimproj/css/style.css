@@ -96,3 +96,21 @@ body {
 .MJXc-display {
     margin: 0 !important;
 }
+
+.table-steel {
+    display: none;
+}
+
+.koef-reech {
+    display: none;
+}
+
+.selector {
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.selector:hover {
+    cursor: pointer;
+    background-color: #f7f8f9;
+}

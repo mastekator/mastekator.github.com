@@ -137,7 +137,7 @@ $(document).ready(function () {
         $("#val4").html(z1_min);
         $("#val5").html(H1);
 
-        //Расчет винтовой передачи скольжения
+        //Расчет винтовой передачи качения
         var P = Math.round(2 * 10 * 10 * 10 * Math.PI / U2 / K); //Шаг резьбы
         var fi = (2 * Math.PI * h / P / K).toFixed(2); //Угол поворота винта
         var v_vinta = 0.002; //Линейная скорость гайки (рандомное взято)
@@ -188,5 +188,13 @@ $(document).ready(function () {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
+
+    $(".steel-selector").on('click', function () {
+        $('.table-steel').toggle();
+    });
+
+    $(".koef-reech-selector").on('click', function () {
+        $('.koef-reech').toggle();
+    })
 
 });
