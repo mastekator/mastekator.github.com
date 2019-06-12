@@ -24,7 +24,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Diplom project</title>
-    <base target="_blank">
 </head>
 <body>
 <div class="page">
@@ -107,7 +106,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <select class="custom-select d-inline">
-                                    <option selected>Выберите двигатель</option>
+                                    <option selected disabled>Выберите двигатель</option>
                                     <option value="1">Двигатель FL86BLS58 110 Вт</option>
                                     <option value="2">Двигатель FL86BLS71 220 Вт</option>
                                     <option value="3">Двигатель FL86BLS98 330 Вт</option>
@@ -132,7 +131,7 @@
                                                                                             title="Например, сталь 45Н  HB=167…194."
                                                                                             class="fas fa-question-circle icon-question"></i></span>
                                                 </div>
-                                                <input id="HB-input" class="form-control"
+                                                <input type="number" id="HB-input" class="form-control"
                                                        placeholder="Основной материал">
                                             </div>
                                         </div>
@@ -141,11 +140,11 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$K_d$$<i data-toggle="tooltip"
                                                                                              data-placement="top"
-                                                                                             title="Коэффициент равный для прямозубых передач 1,12, для косозубых
-    передач 1,0"
+                                                                                             title="Коэффициент равный для прямозубых передач 1,12, для косозубых передач 1,0"
                                                                                              class="fas fa-question-circle icon-question"></i></span>
                                                 </div>
-                                                <input id="Kd-input" class="form-control" placeholder="Введите коэф">
+                                                <input type="number" id="Kd-input" class="form-control"
+                                                       placeholder="Введите коэф">
                                             </div>
                                         </div>
                                         <div class="col-6 mt-2">
@@ -156,7 +155,7 @@
                                                                                                 title="Коэффциент, учитывающий неравномерность нагрузки по ширине зуба"
                                                                                                 class="fas fa-question-circle icon-question"></i></span>
                                                 </div>
-                                                <input id="Khb-input" class="form-control"
+                                                <input type="number" id="Khb-input" class="form-control"
                                                        placeholder="Коэффциент, учитывающий неравномерность нагрузки по ширине зуба">
                                             </div>
                                         </div>
@@ -168,8 +167,95 @@
                                                                                                    title="Коэффициент ширины зубчатого венца, равный 0,2...1.6"
                                                                                                    class="fas fa-question-circle icon-question"></i></span>
                                                 </div>
-                                                <input id="psibd-input" class="form-control"
+                                                <input type="number" id="psibd-input" class="form-control"
                                                        placeholder="Коэффициент ширины зубчатого венца">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$$S_{H}$$<i data-toggle="tooltip"
+                                                                                               data-placement="top"
+                                                                                               title="При нормализации, улучшении и объемной закалке зубьев 1,1 . При азотировании, цементации,цианировании 1,2"
+                                                                                               class="fas fa-question-circle icon-question"></i></span>
+                                                </div>
+                                                <input type="number" id="sh-input" class="form-control"
+                                                       placeholder="Коэффициент безопасности">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$$S_{F}$$<i data-toggle="tooltip"
+                                                                                               data-placement="top"
+                                                                                               title="При нормализации, улучшении и объемной закалке зубьев 1,75 . При азотировании, цементации,цианировании 1,55"
+                                                                                               class="fas fa-question-circle icon-question"></i></span>
+                                                </div>
+                                                <input type="number" id="sf-input" class="form-control"
+                                                       placeholder="Коэффициент безопасности">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$$K_{FC}$$<i data-toggle="tooltip"
+                                                                                                data-placement="top"
+                                                                                                title="При нереверсивной нагрузке 1,0 . При реверсивной нагрузке 0,7...0,8"
+                                                                                                class="fas fa-question-circle icon-question"></i></span>
+                                                </div>
+                                                <input type="number" id="kfc-input" class="form-control"
+                                                       placeholder="Коэффициент, учитывающий реверсивность нагрузки">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-2 mb-0">
+                                    <div class="row d-flex">
+                                        <div class="col-6 mt-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$$K_{P}$$<i data-toggle="tooltip"
+                                                                                               data-placement="top"
+                                                                                               title="Для трапецеидальной и квадратной резьб 0,8 . Для упорной резьбы 0,65"
+                                                                                               class="fas fa-question-circle icon-question"></i></span>
+                                                </div>
+                                                <input type="number" id="kp-input" class="form-control"
+                                                       placeholder="Коэффициент, зависящий от типа резьбы">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$$\gamma$$<i data-toggle="tooltip"
+                                                                                                data-placement="top"
+                                                                                                title="Коэффициент высоты гайки, равный 1,2...3,5"
+                                                                                                class="fas fa-question-circle icon-question"></i></span>
+                                                </div>
+                                                <input type="number" id="y-input" class="form-control"
+                                                       placeholder="Коэффициент высоты гайки">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$$[q]$$<i data-toggle="tooltip"
+                                                                                             data-placement="top"
+                                                                                             title="5...6 МПа - винт стальной, гайка чугунная; 9...11 МПа - винт стальной, гайка бронзовая."
+                                                                                             class="fas fa-question-circle icon-question"></i></span>
+                                                </div>
+                                                <input type="number" id="q-input" class="form-control"
+                                                       placeholder="Допускаемое давление между рабочими поверхностями резьбы винта и гайки">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$$K_{Ш}$$<i data-toggle="tooltip"
+                                                                                             data-placement="top"
+                                                                                             title="Коэффициент диаметра шариков равный 0,10...0,35."
+                                                                                             class="fas fa-question-circle icon-question"></i></span>
+                                                </div>
+                                                <input type="number" id="Kh-input" class="form-control"
+                                                       placeholder="Коэффициент диаметра шариков">
                                             </div>
                                         </div>
                                     </div>
@@ -187,6 +273,13 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <tr>
+                                            <th>Реечная передача</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Передаточное отношениеи реечного преобразователя</td>
+                                            <td id="val1-1"></td>
+                                        </tr>
                                         <tr>
                                             <td>Делительный диаметр шестерни</td>
                                             <td id="val1"></td>
@@ -210,24 +303,35 @@
                                         </tbody>
                                         <tbody>
                                         <tr>
-                                            <td>Угол поворота винта</td>
+                                            <th>Винтовая передача качения</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Передаточное отношение</td>
                                             <td id="val6"></td>
                                         </tr>
                                         <tr>
-                                            <td>Угловая скорость винта</td>
+                                            <td>Шаг резьбы</td>
                                             <td id="val7"></td>
                                         </tr>
                                         <tr>
-                                            <td>Осевая сила, действующая на гайку</td>
+                                            <td>Диаметр шариков</td>
                                             <td id="val8"></td>
                                         </tr>
                                         <tr>
-                                            <td>Cуммарная осевая сила</td>
+                                            <td>Внутренний диаметр винта</td>
                                             <td id="val9"></td>
                                         </tr>
                                         <tr>
-                                            <td>Шаг резьбы</td>
+                                            <td>Внешний диаметр винта</td>
                                             <td id="val10"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Число шариков в рабочей части винтового механизма</td>
+                                            <td id="val11"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td id="val12"></td>
                                         </tr>
                                         </tbody>
                                     </table>
