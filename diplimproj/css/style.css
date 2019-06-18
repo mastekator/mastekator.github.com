@@ -1,3 +1,5 @@
+@import "all.css";
+@import "bootstrap.min.css";
 
 html,
 body {
@@ -50,6 +52,16 @@ body {
     padding: 2.15rem;
     display: -webkit-box !important;
 }
+
+.form-control:focus{
+    box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2), 0 5px 15px 0 rgba(37, 44, 97, 0.15) !important;
+    background-color: white !important;
+}
+
+.form-control{
+    background-color: #fcfafc !important;
+}
+
 
 .h3-contacts {
     color: #717981;

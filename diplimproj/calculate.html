@@ -2,25 +2,11 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--<link rel="stylesheet" href="/css/bootstrap.min.css">-->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
-            async></script>
-    <!--<script type="text/javascript" src="/js/bootstrap.min.js"></script>-->
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
-            async></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="MathJax/MathJax.js"></script>
+    <script type="text/javascript" src="js/TeX-MML-AM_CHTML.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Diplom project</title>
@@ -51,18 +37,18 @@
         <div class="row">
             <div class="card col-lg-12">
                 <div class="card-header bg-white text-center">
-                    Расчет
+                    Расчет ММ углового движения выходного звена
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <p>Ввод данных:</p>
+                        <p>Ввод данных начальных:</p>
                     </div>
                     <div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">m</span>
                             </div>
-                            <input type="number" class="form-control" id="massa" placeholder="Масса объекта"
+                            <input type="number" class="form-control" id="massa" placeholder="Масса объекта, кг"
                                    aria-describedby="basic-addon1" required>
                         </div>
                         <div class="input-group mb-3">
@@ -70,7 +56,8 @@
                                 <span class="input-group-text" id="basic-addon2">V</span>
                             </div>
                             <input type="number" class="form-control" id="velocity"
-                                   placeholder="Скорость перемещения рабочих элементов " aria-describedby="basic-addon1"
+                                   placeholder="Скорость перемещения рабочих элементов, м/с "
+                                   aria-describedby="basic-addon1"
                                    required>
                         </div>
                         <div class="input-group mb-3">
@@ -78,7 +65,7 @@
                                 <span class="input-group-text" id="basic-addon3">$$D_0$$</span>
                             </div>
                             <input type="number" class="form-control" id="diameter"
-                                   placeholder="Минимальный диаметр захватываемого объекта"
+                                   placeholder="Минимальный диаметр захватываемого объекта, мм"
                                    aria-describedby="basic-addon1" required>
                         </div>
                         <div class="input-group mb-3">
@@ -86,7 +73,8 @@
                                 <span class="input-group-text" id="basic-addon4">h</span>
                             </div>
                             <input type="number" class="form-control" id="linearMotion"
-                                   placeholder="Линейное перемещение рабочего элемента" aria-describedby="basic-addon1"
+                                   placeholder="Линейное перемещение рабочего элемента, мм"
+                                   aria-describedby="basic-addon1"
                                    required>
                         </div>
                     </div>
@@ -105,15 +93,23 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <select class="custom-select d-inline">
+                                <select id="engSelect" class="custom-select d-inline">
                                     <option selected disabled>Выберите двигатель</option>
-                                    <option value="1">Двигатель FL86BLS58 110 Вт</option>
-                                    <option value="2">Двигатель FL86BLS71 220 Вт</option>
-                                    <option value="3">Двигатель FL86BLS98 330 Вт</option>
+                                    <option value="3000">Двигатель FL86BLS58 110 Вт 3000 об/мин</option>
+                                    <option value="4000">Двигатель FL42BLS02 52.5 Вт 4000 об/мин</option>
+                                    <option value="4000">Двигатель FL42BLS03 77.5 Вт 4000 об/мин</option>
                                 </select>
                             </div>
-                            <div class="col-6">
-                                <div class="btn btn-light change-coefficients">Изменить коэффициенты</div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-light mt-3 mb-2 d-none" id="calculate">
+                                    Расчёт
+                                </button>
+                            </div>
+                            <div class="col-8 col-lg-6">
+                                <div class="btn btn-light mt-3 mb-2 change-coefficients">Изменить коэффициенты</div>
                             </div>
                         </div>
                         <div class="input-coefficients position-absolute">
@@ -123,7 +119,10 @@
                                         <div class="col-12">
                                             <a href="about-us.html">Узнать коэффициенты в таблице</a>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12">
+                                            <h5 class="mt-2">Реечная передача</h5>
+                                        </div>
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text m-0">HB<i data-toggle="tooltip"
@@ -135,7 +134,7 @@
                                                        placeholder="Основной материал">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$K_d$$<i data-toggle="tooltip"
@@ -147,7 +146,7 @@
                                                        placeholder="Введите коэф">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$K_{hb}$$<i data-toggle="tooltip"
@@ -159,7 +158,7 @@
                                                        placeholder="Коэффциент, учитывающий неравномерность нагрузки по ширине зуба">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$\psi_{bd}$$<i data-toggle="tooltip"
@@ -171,7 +170,7 @@
                                                        placeholder="Коэффициент ширины зубчатого венца">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$S_{H}$$<i data-toggle="tooltip"
@@ -183,7 +182,7 @@
                                                        placeholder="Коэффициент безопасности">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$S_{F}$$<i data-toggle="tooltip"
@@ -195,7 +194,7 @@
                                                        placeholder="Коэффициент безопасности">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$K_{FC}$$<i data-toggle="tooltip"
@@ -210,7 +209,10 @@
                                     </div>
                                     <hr class="mt-2 mb-0">
                                     <div class="row d-flex">
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12">
+                                            <h5 class="mt-2">Винтовая передача качения</h5>
+                                        </div>
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$K_{P}$$<i data-toggle="tooltip"
@@ -222,7 +224,7 @@
                                                        placeholder="Коэффициент, зависящий от типа резьбы">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$\gamma$$<i data-toggle="tooltip"
@@ -234,7 +236,7 @@
                                                        placeholder="Коэффициент высоты гайки">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$[q]$$<i data-toggle="tooltip"
@@ -246,13 +248,13 @@
                                                        placeholder="Допускаемое давление между рабочими поверхностями резьбы винта и гайки">
                                             </div>
                                         </div>
-                                        <div class="col-6 mt-2">
+                                        <div class="col-12 col-lg-6 mt-2">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$$K_{Ш}$$<i data-toggle="tooltip"
-                                                                                             data-placement="top"
-                                                                                             title="Коэффициент диаметра шариков равный 0,10...0,35."
-                                                                                             class="fas fa-question-circle icon-question"></i></span>
+                                                                                               data-placement="top"
+                                                                                               title="Коэффициент диаметра шариков равный 0,10...0,35."
+                                                                                               class="fas fa-question-circle icon-question"></i></span>
                                                 </div>
                                                 <input type="number" id="Kh-input" class="form-control"
                                                        placeholder="Коэффициент диаметра шариков">
@@ -277,28 +279,70 @@
                                             <th>Реечная передача</th>
                                         </tr>
                                         <tr>
-                                            <td>Передаточное отношениеи реечного преобразователя</td>
+                                            <td>Передаточное отношениеи реечного преобразователя, м</td>
                                             <td id="val1-1"></td>
                                         </tr>
                                         <tr>
-                                            <td>Делительный диаметр шестерни</td>
-                                            <td id="val1"></td>
+                                            <td>Делительный диаметр шестерни, мм</td>
+                                            <td id="val1-2"></td>
                                         </tr>
                                         <tr>
-                                            <td>Модуль зубьев</td>
-                                            <td id="val2"></td>
+                                            <td>Модуль зубьев, мм</td>
+                                            <td id="val1-3"></td>
                                         </tr>
                                         <tr>
                                             <td>Угол поворота колеса</td>
-                                            <td id="val3"></td>
+                                            <td id="val1-4"></td>
                                         </tr>
                                         <tr>
                                             <td>Минимальное число зубьев</td>
-                                            <td id="val4"></td>
+                                            <td id="val1-5"></td>
                                         </tr>
                                         <tr>
-                                            <td>Перемещение рейки</td>
-                                            <td id="val5"></td>
+                                            <td>Перемещение рейки, мм</td>
+                                            <td id="val1-6"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Число зубьев шестерни</td>
+                                            <td id="val1-7"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Диаметр окружности вершин зубьев, мм</td>
+                                            <td id="val1-8"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Диаметр окружности впадин зубьев, мм</td>
+                                            <td id="val1-9"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Толщина зуба по средней прямой и толщина зуба шестерни по делительной
+                                                окружности, мм
+                                            </td>
+                                            <td id="val1-10"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Нормальный шаг зубьев, мм</td>
+                                            <td id="val1-11"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Угловая скорость шестерни</td>
+                                            <td id="val1-12"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Скорость линейного перемещения рейки, м/с</td>
+                                            <td id="val1-13"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Минимальная длинна нарезанной части рейки, мм</td>
+                                            <td id="val1-14"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ширина зубчатого венца рейки, мм</td>
+                                            <td id="val1-15"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ширина шестерни, мм</td>
+                                            <td id="val1-16"></td>
                                         </tr>
                                         </tbody>
                                         <tbody>
@@ -306,23 +350,23 @@
                                             <th>Винтовая передача качения</th>
                                         </tr>
                                         <tr>
-                                            <td>Передаточное отношение</td>
+                                            <td>Передаточное отношение, м</td>
                                             <td id="val6"></td>
                                         </tr>
                                         <tr>
-                                            <td>Шаг резьбы</td>
+                                            <td>Шаг резьбы, мм</td>
                                             <td id="val7"></td>
                                         </tr>
                                         <tr>
-                                            <td>Диаметр шариков</td>
+                                            <td>Диаметр шариков, мм</td>
                                             <td id="val8"></td>
                                         </tr>
                                         <tr>
-                                            <td>Внутренний диаметр винта</td>
+                                            <td>Внутренний диаметр винта, мм</td>
                                             <td id="val9"></td>
                                         </tr>
                                         <tr>
-                                            <td>Внешний диаметр винта</td>
+                                            <td>Внешний диаметр винта, мм</td>
                                             <td id="val10"></td>
                                         </tr>
                                         <tr>
@@ -330,8 +374,51 @@
                                             <td id="val11"></td>
                                         </tr>
                                         <tr>
-                                            <td></td>
+                                            <td>Радиус профиля резьбы винта и гайки, мм</td>
                                             <td id="val12"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Диаметр окружности, на которой расположены центры шариков, мм</td>
+                                            <td id="val13"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Смещение профиля резьбы в радиальном направлении, мм</td>
+                                            <td id="val14"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Диаметр окружности, по которой происходит контакт шариков с винтом, мм
+                                            </td>
+                                            <td id="val15"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ширина канавки профиля резьбы, мм</td>
+                                            <td id="val16"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Высота канавки, мм</td>
+                                            <td id="val17"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Внутренний диаметр гайки, мм</td>
+                                            <td id="val18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Диаметр окружности, по которой происходит контакт шариков с гайкой, мм
+                                            </td>
+                                            <td id="val19"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Внешний диаметр гайки, мм</td>
+                                            <td id="val20"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Наружный диаметр гайки при расположении в ней возвратного канала, мм
+                                            </td>
+                                            <td id="val21"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Осевой зазор, мм</td>
+                                            <td id="val22"></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -339,9 +426,6 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-light mt-3 mb-2 d-none" id="calculate">
-                        Расчёт
-                    </button>
                 </div>
             </div>
         </div>

@@ -7,7 +7,9 @@ $(document).ready(function () {
     const n3 = 0.99; //КПД подшипника качения
     const n4 = 0.98; //КПД подшипника скольжениия
     const n5 = 0.98; //КПД направляющей
-    const n = 0.2857; //Общее КПД
+    // var n = Math.pow(n1, 4) * n2 * n3 * Math.pow(n4, 4);
+    // const n = 0.2857; //Общее КПД
+    // console.log(n);
 
     // var HB = 180; //Сталь 45H
     // const k_d = 1.12; //Для прямозубой
@@ -51,14 +53,15 @@ $(document).ready(function () {
         var N = Math.max(N1, N2, N3);
 
         //Расчет мощности
-        F = 4 * N * 0.866;
         F_1 = 2 * N * 0.866;
+        F = 2 * F_1;
         var P = F * v * 1.1 / Math.pow(n1, 4) / n2 / n3 / Math.pow(n4, 4);
 
         $("#power").html(P.toFixed(0) + " " + "Вт");
+        console.log(F);
     }
 
-    //Расчет реечной передачии
+    //Расчет передач
     function calculate() {
 
         if ($("#q-input").val() != 0) {
@@ -132,11 +135,13 @@ $(document).ready(function () {
         //Значения из инпута
         var m = $("#massa").val();
         var v = $("#velocity").val();
-        var d = $("#diameter").val();
+        var d = $("#diameter").val() / 100;
         var h = $("#linearMotion").val();
 
         //Распределение передаточных отношениий
-        var n = 3000; //Номинальная частота вращения
+        var n = Number($("#engSelect :selected").val());
+        // var n = 3000;
+        console.log(typeof n);
         var U = Math.PI * n / 30 / v; //Общее передаточное отношение
         var U1 = 1 / d; //Передаточное отношениеи схвата
         var U2 = 1570; //Передаточное отношение винт-гайки
@@ -147,7 +152,7 @@ $(document).ready(function () {
         var Si_hlimb = 2 * HB + 70; //Предел контактной выносливости поверхностей зубьев
         var Si_H = Si_hlimb / S_H * k_HC * k_HL; //допускаемое контактное напряжение
         var E_pr = 2 * E1 * E2 / (E1 + E2); //приведенный модуль упругости материалов шестерни и рейки
-        var T3 = F_1 * d;
+        var T3 = F * d;
         var d1_1 = 1.2 * k_d * Math.cbrt((T3 * Math.pow(10, 3) * E_pr * k_HB) / (psi_bd * Math.pow(Si_H, 2))); //делительный диаметр шестерни из условия контактной прочности зубьев
         var d1 = Math.ceil(Math.max(d1_1, d1_2)); //Делительный диаметр шестерни после сравнениея
 
@@ -171,18 +176,28 @@ $(document).ready(function () {
 
         //Добавление переменных в таблицу
         $("#val1-1").html(U3.toFixed(4));
-        $("#val1").html(d1);
-        $("#val2").html(m_modul);
-        $("#val3").html(alpha);
-        $("#val4").html(z1_min);
-        $("#val5").html(H1);
+        $("#val1-2").html(d1);
+        $("#val1-3").html(m_modul);
+        $("#val1-4").html(alpha);
+        $("#val1-5").html(z1_min);
+        $("#val1-6").html(H1);
+        $("#val1-7").html(z1);
+        $("#val1-8").html(d1_a);
+        $("#val1-9").html(d1_f);
+        $("#val1-10").html(S1.toFixed(4));
+        $("#val1-11").html(P1.toFixed(4));
+        $("#val1-12").html(W1.toFixed(4));
+        $("#val1-13").html(V1.toFixed(4));
+        $("#val1-14").html(L1_min.toFixed(4));
+        $("#val1-15").html(b1);
+        $("#val1-16").html(b2);
 
         //Расчет винтовой передачи качения
         var P = Math.round(2 * 10 * 10 * 10 * Math.PI / U2 / K); //Шаг резьбы
         var fi = (2 * Math.PI * h / P / K).toFixed(2); //Угол поворота винта
         // var v_vinta = 0.002; //Линейная скорость гайки (рандомное взято)
         var w = (2 * Math.PI * 10 * 10 * 10 * v / P / K).toFixed(2); //Угловая скорость винта
-        var U_vp = P * K / 2 /Math.PI / 1000; //Передаточное отношение
+        var U_vp = P * K / 2 / Math.PI / 1000; //Передаточное отношение
 
         //Проектный расчет винта
         var K_p_h = 0.6; //коэффициент шага резьбы
@@ -196,15 +211,14 @@ $(document).ready(function () {
         var d_k = d_0 - d_h * 0.525; // Диаметр окружности, по которой происходит контакт шариков с винтом
         var h_1 = 0.3 * d_h; // глубина профиля резьбы у винта и гайки,
         var d_H = d_v + 2 * h_1; // Внешний диаметр винта,
-        var  b = d_h * (0.5); // ширина канавки профиля резьбы
-        var  h_k = b / 2; // высота канавки
-        var  z_h = Math.round(Math.PI * d_0 / d_h - 3 * P / d_h); // Число шариков в рабочей части винтового механизма с каналом возврата
-        var  D_v = d_0 + 2 * (r_zh - B_r); // Внутренний диаметр гайки,
-        var  D_k = d_0 + 2 * r_zh * 0.525; // Диаметр окружности, по которой происходит контакт шариков с гайкой
-        var  D_h = D_v - 2 * h_1; // Внешний диаметр гайки,
-        var  D_g = 1.3 * D_v + 2 * d_h + 10; // Наружный диаметр гайки при расположении в ней возвратного канала
-        var  B_g = 2 * (r_zh - d_h / 2) * 0.707; // Осевой зазор,
-
+        var b = d_h * (0.5); // ширина канавки профиля резьбы
+        var h_k = b / 2; // высота канавки
+        var z_h = Math.round(Math.PI * d_0 / d_h - 3 * P / d_h); // Число шариков в рабочей части винтового механизма с каналом возврата
+        var D_v = d_0 + 2 * (r_zh - B_r); // Внутренний диаметр гайки,
+        var D_k = d_0 + 2 * r_zh * 0.525; // Диаметр окружности, по которой происходит контакт шариков с гайкой
+        var D_h = D_v - 2 * h_1; // Внешний диаметр гайки,
+        var D_g = 1.3 * D_v + 2 * d_h + 10; // Наружный диаметр гайки при расположении в ней возвратного канала
+        var B_g = 2 * (r_zh - d_h / 2) * 0.707; // Осевой зазор,
 
 
         $("#val6").html(U_vp.toFixed(4));
@@ -213,7 +227,17 @@ $(document).ready(function () {
         $("#val9").html(d_v);
         $("#val10").html(d_H);
         $("#val11").html(z_h);
-        $("#val12").html();
+        $("#val12").html(r_zh);
+        $("#val13").html(d_0);
+        $("#val14").html(B_r.toFixed(4));
+        $("#val15").html(d_k.toFixed(4));
+        $("#val16").html(b);
+        $("#val17").html(h_k);
+        $("#val18").html(D_v);
+        $("#val19").html(D_k);
+        $("#val20").html(D_h.toFixed(4));
+        $("#val21").html(D_g.toFixed(4));
+        $("#val22").html(B_g.toFixed(4));
 
         console.log(z_h);
     }
@@ -223,7 +247,7 @@ $(document).ready(function () {
         if ($("#massa").val() && $("#velocity").val() && $("#diameter").val() && $("#linearMotion").val()) {
             elEngine();
             $("#fadetoggler").fadeIn(300);
-            $("#calculateEng").off('click');
+            // $("#calculateEng").off('click');
             $("#calculate").removeClass('d-none');
             $(".form-control").removeClass('border-danger');
         } else {
@@ -238,8 +262,14 @@ $(document).ready(function () {
 
     // Кнопка расчет
     $("#calculate").on('click', function () {
-        calculate();
-        // $("#calculate").off('click');
+        var select = $('#engSelect').val();
+        var numb = typeof select;
+        if (numb === "string") {
+            $('#engSelect').removeClass('border-danger');
+            calculate();
+        } else {
+            $('#engSelect').addClass('border-danger');
+        }
     });
 
     $("#reset").click(function () {
